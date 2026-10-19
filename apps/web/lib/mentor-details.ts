@@ -1,4 +1,5 @@
 import { mentors, type Mentor } from "./mentors";
+import type { Service } from "./booking";
 
 export type Review = {
   id: string;
@@ -112,4 +113,29 @@ export function getSimilarMentors(mentor: Mentor, limit = 3): Mentor[] {
           Number(a.domain === mentor.domain) || b.rating - a.rating,
     )
     .slice(0, limit);
+}
+
+export function getMentorServices(mentor: Mentor): Service[] {
+  return [
+    {
+      id: "career-guidance",
+      title: "Career Guidance",
+      description:
+        "Get guidance on career growth, job search, and long-term plans.",
+      price: mentor.price,
+    },
+    {
+      id: "interview-prep",
+      title: "Interview Preparation",
+      description:
+        "Mock interviews and feedback for technical and behavioral rounds.",
+      price: mentor.price,
+    },
+    {
+      id: "resume-review",
+      title: "Resume Review",
+      description: "Get detailed feedback on your resume and LinkedIn profile.",
+      price: Math.round((mentor.price * 2) / 3 / 50) * 50,
+    },
+  ];
 }

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import {
   getMentorById,
   getMentorDetail,
+  getMentorServices,
   getSimilarMentors,
 } from "../../../lib/mentor-details";
 import { mentors } from "../../../lib/mentors";
@@ -51,6 +52,7 @@ export default async function MentorPage({ params }: MentorPageProps) {
 
   const detail = getMentorDetail(mentor);
   const similar = getSimilarMentors(mentor);
+  const services = getMentorServices(mentor);
 
   const tabs = [
     { id: "about", label: "About" },
@@ -69,7 +71,11 @@ export default async function MentorPage({ params }: MentorPageProps) {
             <ProfileTabs tabs={tabs} />
 
             <div className="pt-6 lg:hidden">
-              <BookingCard price={mentor.price} />
+              <BookingCard
+                mentorName={mentor.name}
+                availability={mentor.availability}
+                services={services}
+              />
             </div>
 
             <AboutSection mentor={mentor} detail={detail} />
@@ -84,7 +90,11 @@ export default async function MentorPage({ params }: MentorPageProps) {
 
         <aside className="space-y-6">
           <div className="hidden lg:block">
-            <BookingCard price={mentor.price} />
+            <BookingCard
+              mentorName={mentor.name}
+              availability={mentor.availability}
+              services={services}
+            />
           </div>
           <LanguagesCard languages={detail.languages} />
           <LinksCard links={detail.links} />
