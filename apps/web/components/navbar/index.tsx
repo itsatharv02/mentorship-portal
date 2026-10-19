@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { MenuIcon } from "lucide-react";
 import { Button } from "@repo/ui/components/button";
 import {
@@ -9,29 +10,29 @@ import {
 } from "@repo/ui/components/sheet";
 
 const links = [
-  { label: "Find Mentors", href: "#mentors" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "For Mentors", href: "#for-mentors" },
-  { label: "Resources", href: "#resources" },
+  { label: "Find Mentors", href: "/mentors" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "For Mentors", href: "/#for-mentors" },
+  { label: "Resources", href: "/#resources" },
 ];
 
 export function Navbar() {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <a href="#" className="text-xl font-bold text-primary">
+        <Link href="#" className="text-xl font-bold text-primary">
           Mentora
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
           {links.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -57,9 +58,9 @@ export function Navbar() {
             </SheetHeader>
             <nav className="flex flex-col gap-4 px-4">
               {links.map((link) => (
-                <a key={link.href} href={link.href} className="text-sm">
+                <Link key={link.href} href={link.href} className="text-sm">
                   {link.label}
-                </a>
+                </Link>
               ))}
             </nav>
             <div className="mt-auto flex flex-col gap-2 p-4">
