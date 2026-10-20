@@ -1,5 +1,10 @@
 import { Link } from "react-router";
-import { ArrowRightIcon, ShieldCheckIcon, UserCheckIcon } from "lucide-react";
+import {
+  ArrowRightIcon,
+  GraduationCapIcon,
+  ShieldCheckIcon,
+  UserCheckIcon,
+} from "lucide-react";
 
 const PANELS = [
   {
@@ -15,6 +20,13 @@ const PANELS = [
       "Manage your sessions, availability, earnings, reviews and profile.",
     icon: UserCheckIcon,
   },
+  {
+    to: "/mentee",
+    title: "Mentee panel",
+    description:
+      "Track your sessions, manage bookings and update your profile.",
+    icon: GraduationCapIcon,
+  },
 ];
 
 export default function HomePage() {
@@ -23,7 +35,7 @@ export default function HomePage() {
       <p className="text-2xl font-bold text-primary">Mentora</p>
       <h1 className="mt-2 text-xl font-semibold">Choose a panel</h1>
 
-      <div className="mt-8 grid w-full max-w-2xl gap-4 sm:grid-cols-2">
+      <div className="mt-8 grid w-full max-w-4xl gap-4 sm:grid-cols-3">
         {PANELS.map(({ to, title, description, icon: Icon }) => (
           <Link
             key={to}

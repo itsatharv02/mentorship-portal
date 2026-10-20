@@ -6,6 +6,7 @@ export type NavItem = {
   label: string;
   icon: LucideIcon;
   to?: string;
+  href?: string;
   end?: boolean;
 };
 
@@ -26,7 +27,7 @@ export function PanelSidebar({
       <p className="px-6 py-5 text-xl font-bold text-primary">Mentora</p>
 
       <nav aria-label="Main" className="flex-1 space-y-1 px-3">
-        {items.map(({ label, icon: Icon, to, end }) =>
+        {items.map(({ label, icon: Icon, to, href, end }) =>
           to ? (
             <NavLink
               key={label}
@@ -44,6 +45,15 @@ export function PanelSidebar({
               <Icon className="size-4" />
               {label}
             </NavLink>
+          ) : href ? (
+            <a
+              key={label}
+              href={href}
+              className={`${ITEM_CLASSES} text-muted-foreground hover:bg-muted hover:text-foreground`}
+            >
+              <Icon className="size-4" />
+              {label}
+            </a>
           ) : (
             <span
               key={label}

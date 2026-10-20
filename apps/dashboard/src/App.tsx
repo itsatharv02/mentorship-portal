@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import { AdminLayout } from "./layout/admin-layout";
 import { MentorLayout } from "./layout/mentor-layout";
+import { MenteeLayout } from "./layout/mentee-layout";
 import BookingsPage from "./pages/bookings";
 import DashboardPage from "./pages/dashboard";
 import HomePage from "./pages/home";
@@ -12,6 +13,10 @@ import MentorEarningsPage from "./pages/mentor-earnings";
 import MentorProfilePage from "./pages/mentor-profile";
 import MentorReviewsPage from "./pages/mentor-reviews";
 import MentorsPage from "./pages/mentors";
+import MenteeBookingDetailsPage from "./pages/mentee-booking-details";
+import MenteeBookingsPage from "./pages/mentee-bookings";
+import MenteeDashboardPage from "./pages/mentee-dashboard";
+import MenteeProfilePage from "./pages/mentee-profile";
 import SettingsPage from "./pages/settings";
 import UsersPage from "./pages/users";
 
@@ -38,6 +43,14 @@ export default function App() {
         <Route path="reviews" element={<MentorReviewsPage />} />
         <Route path="profile" element={<MentorProfilePage />} />
         <Route path="*" element={<Navigate to="/mentor" replace />} />
+      </Route>
+
+      <Route path="mentee" element={<MenteeLayout />}>
+        <Route index element={<MenteeDashboardPage />} />
+        <Route path="bookings" element={<MenteeBookingsPage />} />
+        <Route path="bookings/:id" element={<MenteeBookingDetailsPage />} />
+        <Route path="profile" element={<MenteeProfilePage />} />
+        <Route path="*" element={<Navigate to="/mentee" replace />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

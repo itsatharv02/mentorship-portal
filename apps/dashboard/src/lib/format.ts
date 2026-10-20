@@ -43,6 +43,27 @@ export function formatMinutes(minutes: number): string {
   return `${hours12}:${String(mins).padStart(2, "0")} ${period}`;
 }
 
+export function formatLongDateTime(iso: string): string {
+  const date = new Date(iso);
+  const day = date.toLocaleDateString("en-US", {
+    weekday: "short",
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+  const time = date.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  });
+  return `${day} at ${time} (IST)`;
+}
+
+export function formatTimeRange(iso: string, durationMins: number): string {
+  const date = new Date(iso);
+  const start = date.getHours() * 60 + date.getMinutes();
+  return `${formatMinutes(start)} - ${formatMinutes(start + durationMins)}`;
+}
+
 export function timeAgo(days: number): string {
   if (days < 7) return days === 1 ? "1 day ago" : `${days} days ago`;
   if (days < 30) {

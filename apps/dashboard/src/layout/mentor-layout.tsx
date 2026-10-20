@@ -18,13 +18,10 @@ import {
 } from "@repo/ui/components/avatar";
 import { Button } from "@repo/ui/components/button";
 import { CURRENT_MENTOR } from "../data/mentor-panel";
+import { LEARNER_URL } from "../lib/config";
 import { initials } from "../lib/format";
 import { PanelLayout } from "./panel-layout";
 import type { NavItem } from "./panel-sidebar";
-
-const LEARNER_URL =
-  (import.meta.env.VITE_LEARNER_URL as string | undefined) ??
-  "http://localhost:3000";
 
 const ITEMS: NavItem[] = [
   { label: "Dashboard", icon: LayoutDashboardIcon, to: "/mentor", end: true },
