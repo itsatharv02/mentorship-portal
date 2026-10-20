@@ -1,17 +1,28 @@
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
-import { SESSION_TYPES } from "../data/dashboard";
 
-export function SessionTypeChart() {
+type Slice = { name: string; value: number; color: string };
+
+export function DonutCard({
+  title,
+  data,
+  centerValue,
+  centerLabel,
+}: {
+  title: string;
+  data: Slice[];
+  centerValue: string;
+  centerLabel: string;
+}) {
   return (
     <section className="rounded-xl border bg-card p-5">
-      <h2 className="font-semibold">Bookings by Session Type</h2>
+      <h2 className="font-semibold">{title}</h2>
 
       <div className="mt-4 flex flex-wrap items-center justify-center gap-6">
         <div className="relative size-44 shrink-0">
           <ResponsiveContainer width="100%" height="100%">
             <PieChart>
               <Pie
-                data={SESSION_TYPES}
+                data={data}
                 dataKey="value"
                 nameKey="name"
                 innerRadius="68%"
@@ -19,7 +30,7 @@ export function SessionTypeChart() {
                 paddingAngle={2}
                 stroke="none"
               >
-                {SESSION_TYPES.map((entry) => (
+                {data.map((entry) => (
                   <Cell key={entry.name} fill={entry.color} />
                 ))}
               </Pie>
@@ -27,13 +38,13 @@ export function SessionTypeChart() {
             </PieChart>
           </ResponsiveContainer>
           <div className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-3xl font-bold">320</span>
-            <span className="text-xs text-muted-foreground">Bookings</span>
+            <span className="text-2xl font-bold">{centerValue}</span>
+            <span className="text-xs text-muted-foreground">{centerLabel}</span>
           </div>
         </div>
 
         <ul className="space-y-2 text-sm">
-          {SESSION_TYPES.map((entry) => (
+          {data.map((entry) => (
             <li key={entry.name} className="flex items-center gap-2">
               <span
                 aria-hidden

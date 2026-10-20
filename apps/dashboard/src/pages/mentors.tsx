@@ -159,7 +159,7 @@ export default function MentorsPage() {
                 <TableRow key={mentor.id}>
                   <TableCell>
                     <Link
-                      to={`/mentors/${mentor.id}`}
+                      to={`/admin/mentors/${mentor.id}`}
                       className="hover:underline"
                     >
                       <PersonCell name={mentor.name} photo={mentor.photo} />
@@ -177,7 +177,7 @@ export default function MentorsPage() {
                       variant="ghost"
                       size="icon-sm"
                       nativeButton={false}
-                      render={<Link to={`/mentors/${mentor.id}`} />}
+                      render={<Link to={`/admin/mentors/${mentor.id}`} />}
                       aria-label={`View ${mentor.name}`}
                     >
                       <EyeIcon />

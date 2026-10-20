@@ -32,7 +32,7 @@ export default function MentorDetailsPage() {
           This mentor doesn&apos;t exist or has been removed.
         </p>
         <Link
-          to="/mentors"
+          to="/admin/mentors"
           className="mt-4 inline-block text-sm text-primary hover:underline"
         >
           Back to mentors
@@ -53,7 +53,7 @@ export default function MentorDetailsPage() {
   return (
     <>
       <Link
-        to="/mentors"
+        to="/admin/mentors"
         className="mb-4 inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
       >
         <ArrowLeftIcon className="size-4" />

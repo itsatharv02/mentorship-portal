@@ -1,43 +1,44 @@
-import { useState } from "react";
-import { Outlet } from "react-router";
-import { MenuIcon } from "lucide-react";
-import { Button } from "@repo/ui/components/button";
 import {
-  Sheet,
-  SheetContent,
-  SheetTitle,
-  SheetTrigger,
-} from "@repo/ui/components/sheet";
-import { SidebarNav } from "./sidebar-nav";
+  CalendarCheckIcon,
+  FileTextIcon,
+  LayoutDashboardIcon,
+  SettingsIcon,
+  StarIcon,
+  TagsIcon,
+  UserCheckIcon,
+  UsersIcon,
+} from "lucide-react";
+import { Avatar, AvatarFallback } from "@repo/ui/components/avatar";
+import { PanelLayout } from "./panel-layout";
+import type { NavItem } from "./panel-sidebar";
 
-export function AdminLayout() {
-  const [menuOpen, setMenuOpen] = useState(false);
+const ITEMS: NavItem[] = [
+  { label: "Dashboard", icon: LayoutDashboardIcon, to: "/admin", end: true },
+  { label: "Mentors", icon: UserCheckIcon, to: "/admin/mentors" },
+  { label: "Users", icon: UsersIcon, to: "/admin/users" },
+  { label: "Bookings", icon: CalendarCheckIcon, to: "/admin/bookings" },
+  { label: "Categories", icon: TagsIcon },
+  { label: "Reviews", icon: StarIcon },
+  { label: "Content", icon: FileTextIcon },
+  { label: "Settings", icon: SettingsIcon, to: "/admin/settings" },
+];
 
+function AdminFooter() {
   return (
-    <div className="min-h-screen bg-muted/30">
-      <aside className="fixed inset-y-0 left-0 z-30 hidden w-60 border-r bg-background lg:block">
-        <SidebarNav />
-      </aside>
-
-      <div className="lg:pl-60">
-        <header className="sticky top-0 z-20 flex h-14 items-center justify-between border-b bg-background px-4 lg:hidden">
-          <span className="text-lg font-bold text-primary">Mentora</span>
-          <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-            <SheetTrigger render={<Button variant="ghost" size="icon" />}>
-              <MenuIcon />
-              <span className="sr-only">Open menu</span>
-            </SheetTrigger>
-            <SheetContent side="left" className="p-0">
-              <SheetTitle className="sr-only">Navigation</SheetTitle>
-              <SidebarNav onNavigate={() => setMenuOpen(false)} />
-            </SheetContent>
-          </Sheet>
-        </header>
-
-        <main className="p-4 sm:p-6 lg:p-8">
-          <Outlet />
-        </main>
+    <div className="flex items-center gap-3">
+      <Avatar>
+        <AvatarFallback className="text-xs">AD</AvatarFallback>
+      </Avatar>
+      <div className="min-w-0">
+        <p className="text-sm font-medium">Admin</p>
+        <p className="truncate text-xs text-muted-foreground">
+          admin@mentora.com
+        </p>
       </div>
     </div>
   );
+}
+
+export function AdminLayout() {
+  return <PanelLayout items={ITEMS} footer={<AdminFooter />} />;
 }

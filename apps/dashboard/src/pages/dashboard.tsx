@@ -10,11 +10,11 @@ import {
 import { BookingsChart } from "../components/bookings-chart";
 import { BookingsTable } from "../components/bookings-table";
 import { PageHeader } from "../components/page-header";
-import { SessionTypeChart } from "../components/session-type-chart";
+import { DonutCard } from "../components/donut-card";
 import { StatCard } from "../components/stat-card";
 import { TableCard } from "../components/table-card";
 import { BOOKINGS } from "../data/bookings";
-import { STATS } from "../data/dashboard";
+import { STATS, SESSION_TYPES } from "../data/dashboard";
 
 const STAT_ICONS: Record<string, LucideIcon> = {
   users: UsersIcon,
@@ -51,13 +51,21 @@ export default function DashboardPage() {
 
       <div className="mt-6 grid gap-4 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
         <BookingsChart />
-        <SessionTypeChart />
+        <DonutCard
+          title="Bookings by Session Type"
+          data={SESSION_TYPES}
+          centerValue="320"
+          centerLabel="Bookings"
+        />
       </div>
 
       <section className="mt-6">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="font-semibold">Recent Bookings</h2>
-          <Link to="/bookings" className="text-sm text-primary hover:underline">
+          <Link
+            to="/admin/bookings"
+            className="text-sm text-primary hover:underline"
+          >
             View all
           </Link>
         </div>
