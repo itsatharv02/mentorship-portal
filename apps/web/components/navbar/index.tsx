@@ -12,7 +12,7 @@ import {
 const links = [
   { label: "Find Mentors", href: "/mentors" },
   { label: "How It Works", href: "/#how-it-works" },
-  { label: "For Mentors", href: "/#for-mentors" },
+  { label: "For Mentors", href: "/become-a-mentor" },
   { label: "Resources", href: "/#resources" },
 ];
 
