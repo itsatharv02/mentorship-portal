@@ -1,5 +1,10 @@
-import { ArrowRightIcon, UserRoundIcon } from "lucide-react";
-import { Avatar, AvatarFallback } from "@repo/ui/components/avatar";
+import Image from "next/image";
+import { ArrowRightIcon } from "lucide-react";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@repo/ui/components/avatar";
 import { Badge } from "@repo/ui/components/badge";
 import { Button } from "@repo/ui/components/button";
 
@@ -8,17 +13,20 @@ function FloatingCard({
   title,
   subtitle,
   initials,
+  photo,
 }: {
   className: string;
   title: string;
   subtitle: string;
   initials: string;
+  photo: string;
 }) {
   return (
     <div
       className={`flex max-w-56 items-center gap-3 rounded-xl border bg-card p-3 shadow-lg ${className}`}
     >
       <Avatar size="lg">
+        <AvatarImage src={photo} alt="" />
         <AvatarFallback>{initials}</AvatarFallback>
       </Avatar>
       <div>
@@ -28,10 +36,9 @@ function FloatingCard({
     </div>
   );
 }
-
 export function Hero() {
   return (
-    <section className="bg-linear-to-b from-primary/10 to-background">
+    <section className="overflow-x-clip bg-linear-to-b from-primary/10 to-background">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 md:grid-cols-2 md:py-24">
         <div>
           <Badge variant="secondary" className="h-7 px-3 text-sm text-primary">
@@ -56,21 +63,31 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto w-full max-w-md">
-          <div className="flex aspect-[4/5] items-center justify-center rounded-3xl bg-primary/15">
-            <UserRoundIcon className="size-24 text-primary/40" />
+        <div className="relative ml-auto w-full max-w-lg">
+          <div className="relative aspect-[8/7] overflow-hidden rounded-2xl bg-primary/15 shadow-xl">
+            <Image
+              src="https://images.unsplash.com/photo-1543269664-02e941c052f7?q=90&w=1600&auto=format&fit=crop"
+              alt="A smiling learner working on a laptop"
+              fill
+              priority
+              quality={100}
+              sizes="(min-width: 1152px) 32rem, (min-width: 768px) 45vw, 100vw"
+              className="object-cover object-center"
+            />
           </div>
           <FloatingCard
-            className="absolute -top-4 right-0 md:-right-6"
+            className="absolute -top-3 -right-3 lg:-right-8"
             title="Career guidance"
             subtitle="Product Growth"
             initials="CG"
+            photo="https://randomuser.me/api/portraits/men/32.jpg"
           />
           <FloatingCard
-            className="absolute -bottom-4 left-0 md:-left-6"
+            className="absolute right-4 -bottom-5 lg:-right-4"
             title="1:1 Session"
             subtitle="Book a session with top mentors"
             initials="MS"
+            photo="https://randomuser.me/api/portraits/men/45.jpg"
           />
         </div>
       </div>
