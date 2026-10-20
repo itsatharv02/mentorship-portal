@@ -1,49 +1,27 @@
-import {
-  BookOpenIcon,
-  CalendarClockIcon,
-  LaptopIcon,
-  UsersIcon,
-  type LucideIcon,
-} from "lucide-react";
+import type { ReactNode } from "react";
+import { LaptopIcon, type LucideIcon } from "lucide-react";
 
-const features: {
+export type HeroFeature = {
   icon: LucideIcon;
   title: string;
   description: string;
   tone: string;
-}[] = [
-  {
-    icon: UsersIcon,
-    title: "1:1 mentorship sessions",
-    description: "Learn directly from industry experts",
-    tone: "bg-blue-100 text-blue-600",
-  },
-  {
-    icon: CalendarClockIcon,
-    title: "Flexible scheduling",
-    description: "Book sessions at your convenience",
-    tone: "bg-green-100 text-green-600",
-  },
-  {
-    icon: BookOpenIcon,
-    title: "Practical, real-world advice",
-    description: "Get insights that help you grow",
-    tone: "bg-purple-100 text-purple-600",
-  },
-];
+};
 
-export function AuthHero() {
+export type HeroContent = {
+  heading: ReactNode;
+  description: string;
+  features: HeroFeature[];
+};
+
+export function AuthHero({ heading, description, features }: HeroContent) {
   return (
     <section className="relative hidden overflow-hidden bg-linear-to-br from-primary/10 via-background to-background lg:block">
       <div className="relative z-10 max-w-lg px-12 pt-20 xl:px-20">
         <h1 className="text-4xl font-bold tracking-tight xl:text-5xl">
-          Learn from people who&apos;ve{" "}
-          <span className="text-primary">been there.</span>
+          {heading}
         </h1>
-        <p className="mt-6 text-lg text-muted-foreground">
-          Get personalized guidance from experienced professionals to grow your
-          career, skills and confidence.
-        </p>
+        <p className="mt-6 text-lg text-muted-foreground">{description}</p>
 
         <ul className="mt-8 space-y-5">
           {features.map(({ icon: Icon, title, description, tone }) => (

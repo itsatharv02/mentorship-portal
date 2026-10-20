@@ -6,12 +6,14 @@ import { Input } from "@repo/ui/components/input";
 
 type AuthFieldProps = Omit<ComponentProps<"input">, "id" | "className"> & {
   label: string;
+  showLabel?: boolean;
   icon?: LucideIcon;
   error?: string | null;
 };
 
 export function AuthField({
   label,
+  showLabel = false,
   icon: Icon,
   error,
   type = "text",
@@ -24,7 +26,10 @@ export function AuthField({
 
   return (
     <div>
-      <label htmlFor={id} className="sr-only">
+      <label
+        htmlFor={id}
+        className={showLabel ? "mb-1.5 block text-sm font-medium" : "sr-only"}
+      >
         {label}
       </label>
       <div className="relative">

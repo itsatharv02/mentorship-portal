@@ -28,6 +28,15 @@ export function validatePassword(
   return null;
 }
 
+export function validateConfirmPassword(
+  password: string,
+  confirm: string,
+): string | null {
+  if (!confirm) return "Confirm your password.";
+  if (confirm !== password) return "Passwords do not match.";
+  return null;
+}
+
 export function validateName(value: string, label: string): string | null {
   const name = value.trim();
 

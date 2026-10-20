@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState, type FormEvent } from "react";
 import { LockIcon, MailIcon } from "lucide-react";
 import { Button } from "@repo/ui/components/button";
@@ -67,12 +67,12 @@ export function LoginForm() {
       />
 
       <div className="flex justify-end">
-        <a
-          href="#"
+        <Link
+          href="/forgot-password"
           className="text-xs font-medium text-primary hover:underline"
         >
           Forgot password?
-        </a>
+        </Link>
       </div>
 
       <Button type="submit" size="lg" className="h-11 w-full text-base">

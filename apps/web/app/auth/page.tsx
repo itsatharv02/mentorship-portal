@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { AuthHero } from "../../components/auth/auth-hero";
+import { AuthLayout } from "../../components/auth/auth-layout";
+import { LOGIN_HERO } from "../../components/auth/hero-content";
 import { AuthCard } from "../../components/auth/auth-card";
 
 export const metadata: Metadata = {
@@ -16,12 +17,8 @@ export default async function AuthPage({ searchParams }: AuthPageProps) {
   const tab = query.tab === "signup" ? "signup" : "login";
 
   return (
-    <main className="grid min-h-[calc(100vh-4rem)] lg:grid-cols-2">
-      <AuthHero />
-
-      <section className="flex items-center justify-center px-4 py-12">
-        <AuthCard key={tab} initialTab={tab} />
-      </section>
-    </main>
+    <AuthLayout hero={LOGIN_HERO}>
+      <AuthCard key={tab} initialTab={tab} />
+    </AuthLayout>
   );
 }

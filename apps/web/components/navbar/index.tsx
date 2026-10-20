@@ -37,10 +37,21 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-2 md:flex">
-          <Button variant="ghost" size="lg">
+          <Button
+            variant="ghost"
+            size="lg"
+            nativeButton={false}
+            render={<Link href="/auth" />}
+          >
             Log in
           </Button>
-          <Button size="lg">Sign up</Button>
+          <Button
+            size="lg"
+            nativeButton={false}
+            render={<Link href="/auth?tab=signup" />}
+          >
+            Sign up
+          </Button>
         </div>
 
         <Sheet>
@@ -64,8 +75,19 @@ export function Navbar() {
               ))}
             </nav>
             <div className="mt-auto flex flex-col gap-2 p-4">
-              <Button variant="outline">Log in</Button>
-              <Button>Sign up</Button>
+              <Button
+                variant="outline"
+                nativeButton={false}
+                render={<Link href="/auth" />}
+              >
+                Log in
+              </Button>
+              <Button
+                nativeButton={false}
+                render={<Link href="/auth?tab=signup" />}
+              >
+                Sign up
+              </Button>
             </div>
           </SheetContent>
         </Sheet>
